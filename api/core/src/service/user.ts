@@ -1,4 +1,4 @@
-import { AppError } from 'error/appError';
+import { AppError } from '../error/appError';
 import { UserRepository } from '../repositories/user';
 import { User } from '../types/user';
 

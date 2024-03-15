@@ -1,4 +1,4 @@
-import { AppError } from 'error/appError';
+import { AppError } from '../error/appError';
 import { modelUser } from '../models/user';
 import { User } from '../types/user';
 

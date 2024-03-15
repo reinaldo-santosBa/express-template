@@ -1,4 +1,4 @@
-import { AppError } from 'error/appError';
+import { AppError } from '../error/appError';
 import { modelTokenFCM } from '../models/tokenFCM';
 import { Token } from '../types/tokenFCM';
 

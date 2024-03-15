@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { TokenFcmRepository } from '../repositories/tokenFCM';
 import { Token } from '../types/tokenFCM';
-import { AppError } from 'error/appError';
+import { AppError } from '../error/appError';
 interface props {
 	msg: string;
 	token: string;
