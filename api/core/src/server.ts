@@ -12,7 +12,7 @@ new dbConfig();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: '*', credentials: true, }));
 app.use('/token', TokenFcmRoutes);
 app.use('/user', UserRoutes);
 app.get('/', (req: Request, res: Response) => {
