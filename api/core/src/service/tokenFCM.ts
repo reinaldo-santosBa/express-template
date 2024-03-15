@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { TokenFcmRepository } from '../repositories/tokenFCM';
 import { Token } from '../types/tokenFCM';
+import { AppError } from 'error/appError';
 interface props {
 	msg: string;
 	token: string;
@@ -13,14 +14,18 @@ export class TokenFcmService {
 		return new Promise((resolve, reject) => {
 			this.serviceTokenFcm.readAll()
 				.then((tokens) => resolve(tokens))
-				.catch(() => reject(false));
+				.catch((error) => {
+					throw new AppError(error)
+				});
 		});
 	}
 	public async create(token: string): Promise<Token> {
 		return new Promise((resolve, reject) => {
 			this.serviceTokenFcm.create(token)
 				.then((token) => resolve(token))
-				.catch(() => reject(false));
+				.catch((error) => {
+					throw new AppError(error)
+				});
 		});
 	}
 
@@ -48,8 +53,8 @@ export class TokenFcmService {
 			.then((response) => {
 				return response;
 			})
-			.catch(err => { 
-				return err;
+			.catch((error) => {
+				throw new AppError(error)
 			});
 	}
 
@@ -81,8 +86,8 @@ export class TokenFcmService {
 					.then((response) => {
 						return response;
 					})
-					.catch(err => {
-						return err;
+					.catch((error) => {
+						throw new AppError(error)
 					});
 			}
 		});

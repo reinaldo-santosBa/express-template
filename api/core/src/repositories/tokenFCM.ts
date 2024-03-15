@@ -1,3 +1,4 @@
+import { AppError } from 'error/appError';
 import { modelTokenFCM } from '../models/tokenFCM';
 import { Token } from '../types/tokenFCM';
 
@@ -10,7 +11,9 @@ export class TokenFcmRepository {
 				const modelTokensFCM = new modelTokenFCM({ token });
 				modelTokensFCM.save()
 					.then((token) => resolve(token))
-					.catch(() => reject(false));
+					.catch((error) => {
+						throw new AppError(error)
+					});
 			}
 		});
 	}
@@ -18,7 +21,9 @@ export class TokenFcmRepository {
 		return new Promise((resolve, reject) => {
 			modelTokenFCM.find()
 				.then((token) => resolve(token))
-				.catch(() => reject(false));
+				.catch((error) => {
+					throw new AppError(error)
+				});
 		});
 	}
 }

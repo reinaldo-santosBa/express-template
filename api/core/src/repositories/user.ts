@@ -1,3 +1,4 @@
+import { AppError } from 'error/appError';
 import { modelUser } from '../models/user';
 import { User } from '../types/user';
 
@@ -7,14 +8,18 @@ export class UserRepository {
 			const userModel = new modelUser({ name });
 			userModel.save()
 				.then((user) => resolve(user))
-				.catch(() => reject(false));
+				.catch((error) => {
+					throw new AppError(error)
+				});
 		});
 	}
 	public async readAll(): Promise<User[]> {
 		return new Promise((resolve, reject) => {
 			modelUser.find()
 				.then((user) => resolve(user))
-				.catch(() => reject(false));
+				.catch((error) => {
+					throw new AppError(error)
+				});
 		});
 	}
 	public async read(name: string): Promise<User> {
@@ -26,7 +31,9 @@ export class UserRepository {
 					}
 					resolve({name: ''});
 				})
-				.catch(() => reject(false));
+				.catch((error) => {
+					throw new AppError(error)
+				});
 		});
 	}
 }   
