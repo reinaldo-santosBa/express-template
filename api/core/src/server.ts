@@ -15,6 +15,9 @@ app.use(express.json());
 app.use(cors({ origin: '*' }));
 app.use('/token', TokenFcmRoutes);
 app.use('/user', UserRoutes);
+app.get('/', (req: Request, res: Response) => {
+    res.json({msg: 'hello'})
+})
 app.use((req: Request, res: Response, next: NextFunction) => {
     const error = new AppError('Route not found', 404);
     next(error);
