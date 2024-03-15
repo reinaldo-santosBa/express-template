@@ -7,7 +7,7 @@ export class dbConfig {
 	}
 	private connectDb = () => {
         
-		mongoose.connect(process.env.connectString + '')
+		mongoose.connect("mongodb+srv://reinaldodevcontato:nH1WkpNsTrFm8sm4@cluster0.58lgzvf.mongodb.net/")
 			.then(() => console.log('Connected!'));
 	};
 }
